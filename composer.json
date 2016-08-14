@@ -1,5 +1,5 @@
 {
-    "name": "psr/http-factory",
+    "name": "http-interop/http-factory",
     "description": "Common interface for HTTP message factories",
     "keywords": [
         "psr",

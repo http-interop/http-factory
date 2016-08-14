@@ -1,2 +1,3 @@
-# http-factory
-Factories for PSR-7 objects
+# HTTP Factory
+
+PSR-17 interfaces for HTTP factories.
