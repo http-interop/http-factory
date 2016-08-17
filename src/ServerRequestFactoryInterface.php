@@ -16,11 +16,4 @@ interface ServerRequestFactoryInterface
      * @return ServerRequestInterface
      */
     public function createServerRequest($method, $uri);
-
-    /**
-     * Create a new server request from PHP globals.
-     *
-     * @return ServerRequestInterface
-     */
-    public function createServerRequestFromGlobals();
 }
