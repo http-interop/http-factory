@@ -1,1 +1,4 @@
 extends: default
+reviewers:
+    teams:
+        - http-factory-contributors
