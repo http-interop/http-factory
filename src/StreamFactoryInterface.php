@@ -7,11 +7,11 @@ use Psr\Http\Message\StreamInterface;
 interface StreamFactoryInterface
 {
     /**
-     * Create a new stream from a resource.
+     * Create a new stream from a resource or a string.
      *
-     * The resource MUST be readable and SHOULD be seekable. It MAY be writable.
+     * If argument is resource, it MUST be readable and SHOULD be seekable. It MAY be writable.
      *
-     * @param resource $resource
+     * @param string|resource $resource
      *
      * @return StreamInterface
      */
