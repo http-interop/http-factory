@@ -7,17 +7,37 @@ use Psr\Http\Message\StreamInterface;
 interface StreamFactoryInterface
 {
     /**
-     * Create a new stream from a resource or a string.
+     * Create a new stream from a string.
      *
-     * If the argument is a resource, it MUST be readable and SHOULD be seekable. It MAY be writable.
-     * If the argument is a string, a temporary resource will be created that is writable and seekable.
-     * 
-     * If the arugment is a string it will be interpided as the content of the stream. File names or 
-     * file paths are not supported. 
+     * The stream SHOULD be created with a temporary resource.
      *
-     * @param string|resource $resource
+     * @param string $content
      *
      * @return StreamInterface
      */
-    public function createStream($resource);
+    public function createStream($content = '');
+
+    /**
+     * Create a stream from an existing file.
+     *
+     * The file MUST be opened using the given mode, which may be any mode
+     * supported by the `fopen` function.
+     *
+     * @param string $file
+     * @param string $mode
+     *
+     * @return StreamInterface
+     */
+    public function createStreamFromFile($file, $mode = 'r');
+
+    /**
+     * Create a new stream from an existing resource.
+     *
+     * The stream MUST be readable and may be writable.
+     *
+     * @param resource $resource
+     *
+     * @return StreamInterface
+     */
+    public function createStreamFromResource($resource);
 }
