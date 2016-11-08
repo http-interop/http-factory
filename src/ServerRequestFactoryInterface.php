@@ -10,10 +10,20 @@ interface ServerRequestFactoryInterface
     /**
      * Create a new server request.
      *
-     * @param string $method
-     * @param UriInterface|string $uri
+     * The method and URI of the request SHOULD be derived from the given
+     * server parameters.
+     *
+     * If the method or URI parameter is passed, these values MUST be used
+     * instead of the server parameters.
+     *
+     * @param array $server
+     * @param string|null $method
+     * @param UriInterface|string|null $uri
+     *
+     * @throws \InvalidArgumentException
+     *  If no valid method or URI can be determined.
      *
      * @return ServerRequestInterface
      */
-    public function createServerRequest($method, $uri);
+    public function createServerRequest(array $server, $method = null, $uri = null);
 }
