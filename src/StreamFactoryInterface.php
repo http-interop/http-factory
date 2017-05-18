@@ -28,6 +28,9 @@ interface StreamFactoryInterface
      * @param string $filename
      * @param string $mode
      *
+     * @throws \InvalidArgumentException
+     *  If the file cannot be opened using the mode requested.
+     *
      * @return StreamInterface
      */
     public function createStreamFromFile($filename, $mode = 'r');
