@@ -18,22 +18,22 @@ interface UploadedFileFactoryInterface
      * @see http://php.net/manual/features.file-upload.post-method.php
      * @see http://php.net/manual/features.file-upload.errors.php
      *
-     * @param string|resource $file
-     * @param integer $size in bytes
-     * @param integer $error PHP file upload error
-     * @param string $clientFilename
-     * @param string $clientMediaType
+     * @param string|resource|StreamInterface $file Underlying file, PHP stream
+     *     resource, or StreamInterface representing the uploaded file content.
+     * @param int $size in bytes
+     * @param int $error PHP file upload error
+     * @param string $clientFilename Filename as provided by the client, if any.
+     * @param string $clientMediaType Media type as provided by the client, if any.
      *
      * @return UploadedFileInterface
      *
-     * @throws \InvalidArgumentException
-     *  If the file resource is not readable.
+     * @throws \InvalidArgumentException If the file resource is not readable.
      */
     public function createUploadedFile(
         $file,
-        $size = null,
-        $error = \UPLOAD_ERR_OK,
-        $clientFilename = null,
-        $clientMediaType = null
-    );
+        int $size = null,
+        int $error = \UPLOAD_ERR_OK,
+        string $clientFilename = null,
+        string $clientMediaType = null
+    ): UploadedFileInterface;
 }

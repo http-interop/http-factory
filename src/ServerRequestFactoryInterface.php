@@ -5,27 +5,22 @@ namespace Interop\Http\Factory;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 
-interface ServerRequestFactoryInterface
+interface ServerRequestFactoryInterface extends
+    StreamFactoryInterface,
+    UploadedFileFactoryInterface,
+    UriFactoryInterface
 {
     /**
      * Create a new server request.
      *
-     * @param string $method
-     * @param UriInterface|string $uri
+     * @param string $method The HTTP method associated with the request.
+     * @param UriInterface|string $uri The URI associated with the request. If
+     *     the value is a string, the factory MUST create a UriInterface
+     *     instance based on it.
+     * @param array $serverParams Array of SAPI parameters with which to seed
+     *     the generated request instance.
      *
      * @return ServerRequestInterface
      */
-    public function createServerRequest($method, $uri);
-
-    /**
-     * Create a new server request from server variables.
-     *
-     * @param array $server Typically $_SERVER or similar structure.
-     *
-     * @return ServerRequestInterface
-     *
-     * @throws \InvalidArgumentException
-     *  If no valid method or URI can be determined.
-     */
-    public function createServerRequestFromArray(array $server);
+    public function createServerRequest(string $method, $uri, array $serverParams = []): ServerRequestInterface;
 }
