@@ -2,15 +2,13 @@
 
 namespace Interop\Http\Factory;
 
+use Psr\Http\Message\StreamInterface;
 use Psr\Http\Message\UploadedFileInterface;
 
-interface UploadedFileFactoryInterface
+interface UploadedFileFactoryInterface extends StreamFactoryInterface
 {
     /**
      * Create a new uploaded file.
-     *
-     * If a string is used to create the file, a temporary resource will be
-     * created with the content of the string.
      *
      * If a size is not provided it will be determined by checking the size of
      * the file.
@@ -18,8 +16,8 @@ interface UploadedFileFactoryInterface
      * @see http://php.net/manual/features.file-upload.post-method.php
      * @see http://php.net/manual/features.file-upload.errors.php
      *
-     * @param string|resource|StreamInterface $file Underlying file, PHP stream
-     *     resource, or StreamInterface representing the uploaded file content.
+     * @param StreamInterface $stream Underlying stream representing the
+     *     uploaded file content.
      * @param int $size in bytes
      * @param int $error PHP file upload error
      * @param string $clientFilename Filename as provided by the client, if any.
@@ -30,7 +28,7 @@ interface UploadedFileFactoryInterface
      * @throws \InvalidArgumentException If the file resource is not readable.
      */
     public function createUploadedFile(
-        $file,
+        StreamInterface $stream,
         int $size = null,
         int $error = \UPLOAD_ERR_OK,
         string $clientFilename = null,
