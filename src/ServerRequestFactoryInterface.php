@@ -5,10 +5,7 @@ namespace Interop\Http\Factory;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 
-interface ServerRequestFactoryInterface extends
-    StreamFactoryInterface,
-    UploadedFileFactoryInterface,
-    UriFactoryInterface
+interface ServerRequestFactoryInterface
 {
     /**
      * Create a new server request.

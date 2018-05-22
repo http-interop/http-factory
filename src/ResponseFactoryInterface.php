@@ -4,7 +4,7 @@ namespace Interop\Http\Factory;
 
 use Psr\Http\Message\ResponseInterface;
 
-interface ResponseFactoryInterface extends StreamFactoryInterface
+interface ResponseFactoryInterface
 {
     /**
      * Create a new response.
